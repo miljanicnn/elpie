@@ -1,5 +1,4 @@
 import React from "react";
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid";
 
 export default function Pagination(props) {
 	return (
@@ -29,8 +28,6 @@ export default function Pagination(props) {
 						</span>{" "}
 						of{" "}
 						<span className='font-medium'>
-							{/* {props.pagination && props.pagination}
-							{props.totalResults && props.totalResults} */}
 							{props.totalResults && props.totalResults}
 						</span>
 					</p>

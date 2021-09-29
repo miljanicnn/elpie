@@ -16,8 +16,8 @@ export default function Login() {
 
 	const [message, setMessage] = useState({
 		visible: false,
-		color: "gray",
-		text: "Login unsuccessful!",
+		color: "",
+		text: "",
 	});
 
 	async function handleSubmit(e) {
@@ -125,16 +125,6 @@ export default function Login() {
 								</Link>
 							</p>
 						</div>
-						{/* <div className='flex items-center justify-between'>
-							<div className='text-sm'>
-								<Link
-									to='/'
-									className='font-medium text-indigo-600 hover:text-indigo-500'
-								>
-									Forgot your password?
-								</Link>
-							</div>
-						</div> */}
 					</form>
 				</div>
 			</div>

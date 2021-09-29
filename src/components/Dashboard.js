@@ -8,8 +8,6 @@ import RecordsList from "./RecordsList";
 import Message from "./Message";
 import { useAuth } from "../contexts/AuthContext";
 import axios from "axios";
-import Browse from "./Browse";
-import { Prev } from "react-bootstrap/esm/PageItem";
 
 export default function Home() {
 	const { username, currentUser } = useAuth();
@@ -24,7 +22,6 @@ export default function Home() {
 	const [rating, setRating] = useState(5);
 	const [isOpen, setIsOpen] = useState(false);
 	const [selectedReview, setSelectedReview] = useState({});
-	const [newReviews, setNewReviews] = useState(0);
 
 	const [windowSize, setWindowSize] = useState({
 		width: window.innerWidth,
@@ -36,8 +33,8 @@ export default function Home() {
 	});
 	const [message, setMessage] = useState({
 		visible: false,
-		color: "gray",
-		text: "There's been an error. Please try again.",
+		color: "",
+		text: "",
 	});
 	const reviewRef = useRef();
 	const ratingRef = useRef();
@@ -101,16 +98,11 @@ export default function Home() {
 					},
 				})
 				.then((response) => {
-					// setReviews([]);
 					const newReviews = response.data;
 					if (newReviews.length < 5) {
 						setLoadMoreButtonDisabled(true);
 					}
-					console.log(response.data);
 					setReviews((prev) => [...prev, ...newReviews]);
-					// response.data.forEach((el) => {
-					// 	setReviews((arr) => [...arr, el]);
-					// });
 					setLoading(false);
 				});
 		} catch (err) {
@@ -129,19 +121,12 @@ export default function Home() {
 			axios
 				.get("http://localhost:3001/getusernames")
 				.then((response) => {
-					// console.log(response.data);
 					response.data.forEach((el) => {
 						setUsers((arr) => [...arr, el]);
 					});
 					setLoading(false);
-					// response.data.map((el) => {
-
-					// });
 				})
-				.then(() => {
-					// console.log(usernames);
-					// console.log(currentUser);
-				});
+				.then(() => {});
 		} catch (err) {
 			console.log("err: " + err);
 		}
@@ -183,7 +168,6 @@ export default function Home() {
 						setTimeout(() => {
 							setMessage({ ...message, visible: false });
 						}, 5000);
-						// alert("SUCCESS");
 					} else {
 						setMessage({
 							color: "gray",
@@ -290,17 +274,7 @@ export default function Home() {
 		<div className='flex flex-col min-h-screen bg-gray-50'>
 			<Navbar />
 			<Message message={message} setMessage={setMessage} />
-			{/* <header className='flex-grow-0 bg-gradient-to-b from-indigo-700 to-indigo-500'>
-				<div className='max-w-7xl mx-auto h-40 py-6 px-4 sm:px-6 lg:px-8'>
-					{username && (
-						<h1 className='text-3xl font-bold text-gray-100'>
-							<Link to={"/u/" + username}>
-								Welcome, {username}.
-							</Link>
-						</h1>
-					)}
-				</div>
-			</header> */}
+
 			<header className='flex-grow-0 border-b border-indigo-100 bg-white'>
 				<div className='max-w-7xl mx-auto  p-6'>
 					{username && (
@@ -487,10 +461,6 @@ export default function Home() {
 											<img
 												className='absolute bottom-0 h-full w-full object-cover'
 												src={review.cover}
-												// onClick={() => {
-												// 	setImgLoading(true);
-												// 	handleClickDetails(res);
-												// }}
 											/>
 										</div>
 
@@ -523,18 +493,6 @@ export default function Home() {
 						)}
 					</div>
 				</div>
-				{/* <ReviewModal
-					open={open}
-					setOpen={() => setOpen(false)}
-					loading={loading}
-					searchResults={searchResults}
-					searchCollection={(q) => searchCollection(q)}
-					selected={selected}
-					reviewRef={reviewRef}
-					setSelected={(r) => setSelected(r)}
-					handleSubmitReview={handleSubmitReview}
-					classNames={classNames}
-				/> */}
 			</main>
 			<Transition appear show={isOpen} as={Fragment}>
 				<Dialog
@@ -543,15 +501,6 @@ export default function Home() {
 					onClose={closeModal}
 				>
 					<div className='min-h-screen px-4 text-center'>
-						{/* <Transition.Child
-							as={Fragment}
-							enter='ease-out duration-300'
-							enterFrom='opacity-0'
-							enterTo='opacity-100'
-							leave='ease-in duration-200'
-							leaveFrom='opacity-100'
-							leaveTo='opacity-0'
-						></Transition.Child> */}
 						<Dialog.Overlay className='fixed inset-0 bg-indigo-600 opacity-30 ' />
 
 						{/* This element is to trick the browser into centering the modal contents. */}
@@ -587,10 +536,6 @@ export default function Home() {
 											<img
 												className='absolute bottom-0 h-full w-full object-cover'
 												src={selectedReview.cover}
-												// onClick={() => {
-												// 	setImgLoading(true);
-												// 	handleClickDetails(res);
-												// }}
 											/>
 										</div>
 

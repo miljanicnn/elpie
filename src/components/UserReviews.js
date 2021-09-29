@@ -162,10 +162,6 @@ export default function UserReviews(props) {
 								<img
 									className='absolute bottom-0 h-full w-full object-cover'
 									src={review.cover}
-									// onClick={() => {
-									// 	setImgLoading(true);
-									// 	handleClickDetails(res);
-									// }}
 								/>
 							</div>
 
@@ -189,15 +185,6 @@ export default function UserReviews(props) {
 					onClose={closeModal}
 				>
 					<div className='min-h-screen px-4 text-center'>
-						{/* <Transition.Child
-							as={Fragment}
-							enter='ease-out duration-300'
-							enterFrom='opacity-0'
-							enterTo='opacity-100'
-							leave='ease-in duration-200'
-							leaveFrom='opacity-100'
-							leaveTo='opacity-0'
-						></Transition.Child> */}
 						<Dialog.Overlay className='fixed inset-0 bg-indigo-600 opacity-30 ' />
 
 						{/* This element is to trick the browser into centering the modal contents. */}
@@ -233,10 +220,6 @@ export default function UserReviews(props) {
 											<img
 												className='absolute bottom-0 h-full w-full object-cover'
 												src={selectedReview.cover}
-												// onClick={() => {
-												// 	setImgLoading(true);
-												// 	handleClickDetails(res);
-												// }}
 											/>
 										</div>
 

@@ -65,7 +65,6 @@ export default function RecordsList(props) {
 						setSelected(response.data[0]);
 						setSearchResults(tempArray);
 						setLoading(false);
-						// setQuery("");
 					}
 				});
 		} catch (err) {

@@ -22,8 +22,8 @@ export default function BrowseRecords() {
 
 	const [message, setMessage] = useState({
 		visible: false,
-		color: "gray",
-		text: "There's been an error. Please try again.",
+		color: "",
+		text: "",
 	});
 
 	const sortRef = useRef();
@@ -140,15 +140,6 @@ export default function BrowseRecords() {
 				// history.push("/");
 				setButtonLoading(false);
 				updateWishlist();
-				setMessage({
-					...message,
-					visible: true,
-					color: "red",
-					text: `You have added ${res.title} to your wishlist!`,
-				});
-				setTimeout(() => {
-					setMessage({ ...message, visible: false });
-				}, 5000);
 			});
 	};
 
@@ -165,17 +156,7 @@ export default function BrowseRecords() {
 				console.log("UPDATED WISHLIST");
 				setButtonLoading(false);
 			})
-			.finally(() => {
-				setMessage({
-					...message,
-					visible: true,
-					color: "gray",
-					text: `You have removed ${res.title} from your wishlist!`,
-				});
-				setTimeout(() => {
-					setMessage({ ...message, visible: false });
-				}, 5000);
-			});
+			.finally(() => {});
 	};
 
 	const handleAddToCollection = (res) => {
@@ -192,15 +173,6 @@ export default function BrowseRecords() {
 			.then((response) => {
 				updateCollection();
 				setButtonLoading(false);
-				setMessage({
-					...message,
-					visible: true,
-					color: "indigo",
-					text: `You have added ${res.title} to your collection!`,
-				});
-				setTimeout(() => {
-					setMessage({ ...message, visible: false });
-				}, 5000);
 			});
 	};
 
@@ -216,17 +188,7 @@ export default function BrowseRecords() {
 				updateCollection();
 				setButtonLoading(false);
 			})
-			.finally(() => {
-				setMessage({
-					...message,
-					visible: true,
-					color: "indigo",
-					text: `You have removed ${res.title} from your collection!`,
-				});
-				setTimeout(() => {
-					setMessage({ ...message, visible: false });
-				}, 5000);
-			});
+			.finally(() => {});
 	};
 
 	const handleAddRecord = (res) => {
@@ -263,9 +225,6 @@ export default function BrowseRecords() {
 	};
 
 	const getResults = (q, p) => {
-		// console.log(wishlist);
-		// e.preventDefault();
-		// setSearchQuery(searchRef.current.value);
 		let mounted = true;
 		setQuery(q);
 		setSearchResults([]);
@@ -279,10 +238,7 @@ export default function BrowseRecords() {
 					)
 					.then((response) => {
 						if (mounted) {
-							// console.log(response);
 							const tempArray = [];
-							// setSearchResults(response.data.results);
-							// console.log(response.data.results);
 							response.data.results.map((el) => {
 								tempArray.push({
 									id: el.id,
@@ -294,7 +250,6 @@ export default function BrowseRecords() {
 							});
 							setPagination(response.data.pagination.items);
 							setSearchResults(tempArray);
-
 							setLoading(false);
 						}
 					});
@@ -302,7 +257,6 @@ export default function BrowseRecords() {
 				console.log("err: " + err);
 			}
 		}
-		// console.log("Query: " + q);
 
 		return () => {
 			mounted = false;

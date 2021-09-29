@@ -63,9 +63,7 @@ export default function UserRecords(props) {
 					},
 				})
 				.then((response) => {
-					// console.log(response);
 					if (mounted) {
-						// console.log(response);
 						response.data.map((el) => {
 							tempArray.push({
 								id: el.id,
@@ -78,7 +76,6 @@ export default function UserRecords(props) {
 					}
 				})
 				.then(() => {
-					// console.log(tempArray);
 					setSearchResults(tempArray);
 				})
 				.then(() => {
@@ -192,12 +189,8 @@ export default function UserRecords(props) {
 			<div className='w-full'>
 				<Browse
 					passQuery={(query) => {
-						// props.show === "w"
-						// 	? setQ(query)
-						// 	: searchCollection(query);
 						setQuery(query);
 					}}
-					// getResults={(query) => getResults(query, page)}
 					placeholder={`Browse ${props.user.username} ${
 						props.show === "w" ? "wishlist" : "collection"
 					}...`}
@@ -360,7 +353,7 @@ export default function UserRecords(props) {
 					</div>
 				)}
 
-				{/* DIALOG WITH RECORD DETAILS */}
+				{/* TODO: Record details dialog --- should be a component */}
 				<Transition.Root show={open} as={Fragment}>
 					<Dialog
 						as='div'
@@ -368,7 +361,6 @@ export default function UserRecords(props) {
 						className='fixed inset-0 overflow-hidden'
 						open={open}
 						onClose={setOpen}
-						// onClose={setImgLoading}
 					>
 						<div className='absolute inset-0 overflow-hidden'>
 							<Transition.Child
@@ -406,7 +398,6 @@ export default function UserRecords(props) {
 												<button
 													className='rounded-md text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white'
 													onClick={() => {
-														//setImgLoading(true);
 														setOpen(false);
 													}}
 												>
@@ -532,7 +523,6 @@ export default function UserRecords(props) {
 												</div>
 											</div>
 											<div className='mt-6 relative flex-1 flex-grow px-4 sm:px-6'>
-												{/* Replace with your content */}
 												<div className='inset-0'>
 													<div
 														className='h-full  max-w-full'
@@ -624,11 +614,8 @@ export default function UserRecords(props) {
 															</tbody>
 														</table>
 													</div>
-													{/* <div className='mt-6 bg-indigo-200'>
-													
-												</div> */}
 												</div>
-												{/* OVDJE SU DUGMICI */}
+												{/* Buttons */}
 												{selectedRecord && (
 													<div className='flex flex-row flex-grow-0 flex-auto justify-between mt-6 space-x-6 w-full'>
 														{props.current ===
@@ -744,8 +731,6 @@ export default function UserRecords(props) {
 														)}
 													</div>
 												)}
-
-												{/* /End replace */}
 											</div>
 										</div>
 									</div>

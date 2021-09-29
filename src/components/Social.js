@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Route, Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import axios from "axios";
 import Navbar from "./Navbar";
@@ -7,7 +7,7 @@ import Browse from "./Browse";
 import Message from "./Message";
 
 export default function Social() {
-	const { username, currentUser } = useAuth();
+	const { currentUser } = useAuth();
 	const [users, setUsers] = useState([]);
 	const [following, setFollowing] = useState([]);
 	const [followedBy, setFollowedBy] = useState([]);
@@ -21,7 +21,6 @@ export default function Social() {
 
 	useEffect(() => {
 		if (currentUser) {
-			// setUsers([]);
 			updateFollowings();
 			searchUsers("");
 		}
@@ -85,7 +84,7 @@ export default function Social() {
 			setMessage({
 				...message,
 				visible: true,
-				color: "red",
+				color: "gray",
 				text: `An error has occured. Please try again later.`,
 			});
 		}
@@ -102,7 +101,6 @@ export default function Social() {
 					follows: user.uid,
 				})
 				.then((response) => {
-					console.log("Response:");
 					console.log(response);
 				})
 				.finally(() => {
@@ -110,7 +108,7 @@ export default function Social() {
 					setMessage({
 						...message,
 						visible: true,
-						color: "gray",
+						color: "red",
 						text: `You are no longer following ${user.username}`,
 					});
 					setTimeout(() => {
@@ -131,7 +129,7 @@ export default function Social() {
 
 	const searchUsers = (q) => {
 		let mounted = true;
-		//setQuery(q);
+
 		setUsers([]);
 		if (q !== "") {
 			setLoading(true);
@@ -159,15 +157,6 @@ export default function Social() {
 		};
 	};
 
-	const handleClick = () => {
-		setMessage({ ...message, visible: true });
-	};
-
-	const subnav = [
-		{ name: "Following", path: "following", color: "gray" },
-		{ name: "Followers", path: "followers", color: "gray" },
-	];
-
 	return (
 		<div className='flex flex-col min-h-screen w-full bg-gray-50'>
 			<Message message={message} setMessage={setMessage} />
@@ -178,7 +167,7 @@ export default function Social() {
 					<div className='flex flex-col flex-grow-0 flex-shrink-0 bg-gradient-to-t md:bg-gradient-to-l from-white to-gray-50 w-full md:w-1/3 md:border-r border-b border-indigo-100 items-center md:items-end md:py-6 '>
 						<div className='flex flex-col md:sticky md:top-6 w-full p-6 items-center md:items-end'>
 							<div className='text-xl font-bold text-gray-800'>
-								Find some friends!
+								Search users!
 							</div>
 							<div className='pt-6 mb-12 flex flex-col w-full text-center items-center md:items-end'>
 								<Browse
@@ -274,105 +263,6 @@ export default function Social() {
 									)}{" "}
 								</div>
 							)}
-
-							{/* 
-						<table className='min-w-full divide-y divide-gray-200'>
-							<thead className='bg-gray-50'>
-								<tr>
-									<th
-										scope='col'
-										className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'
-									></th>
-									<th
-										scope='col'
-										className='px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider'
-									></th>
-								</tr>
-							</thead>
-							<tbody className='bg-white divide-y divide-gray-200'>
-								{users.length > 0
-									? users.map(
-											(user) =>
-												user.uid !==
-													currentUser.uid && (
-													<tr key={user.uid}>
-														<td className='px-6 py-4 whitespace-nowrap'>
-															<div className='flex items-center'>
-																<div className='h-10 w-10 bg-white rounded-full relative object-contain overflow-hidden'>
-																	<img
-																		src={`https://avatars.dicebear.com/api/bottts/${user.username}.svg`}
-																	/>
-																</div>
-																<div className='ml-4'>
-																	<div className='text-sm font-medium text-gray-900'>
-																		<Link
-																			to={{
-																				pathname:
-																					"/u/" +
-																					user.username,
-																				state: {
-																					user: user,
-																				},
-																			}}
-																		>
-																			{
-																				user.username
-																			}
-																		</Link>{" "}
-																		{followedBy.includes(
-																			user.uid
-																		) && (
-																			<span className='ml-4 text-xs  text-gray-500'>
-																				{" "}
-																				Follows
-																				you
-																			</span>
-																		)}
-																	</div>
-																</div>
-															</div>
-														</td>
-
-														<td className='px-6 py-4 whitespace-nowrap float-right text-sm font-medium'>
-															{following.includes(
-																user.uid
-															) ? (
-																<button
-																	disabled={
-																		loading
-																	}
-																	onClick={() =>
-																		handleUnfollow(
-																			user
-																		)
-																	}
-																	className='flex justify-center w-24 py-2 px-4 border border-transparent text-sm font-medium rounded-md text-indigo-600 bg-gray-100 hover:bg-white hover:text-red-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50'
-																>
-																	Unfollow
-																</button>
-															) : (
-																<button
-																	disabled={
-																		loading
-																	}
-																	onClick={() =>
-																		handleFollow(
-																			user
-																		)
-																	}
-																	className='flex justify-center w-24 py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50'
-																>
-																	Follow
-																</button>
-															)}
-														</td>
-													</tr>
-												)
-									  )
-									: "Nothing here"}
-							</tbody>
-						</table>
-					 */}
 						</div>
 					</div>
 				</div>

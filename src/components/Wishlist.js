@@ -8,7 +8,7 @@ import Pagination from "./Pagination";
 import Message from "./Message";
 
 export default function Wishlist() {
-	const { username, currentUser } = useAuth();
+	const { currentUser } = useAuth();
 	const [searchResults, setSearchResults] = useState([]);
 	const [loading, setLoading] = useState(false);
 	const [wishlist, setWishlist] = useState([]);
@@ -18,8 +18,8 @@ export default function Wishlist() {
 
 	const [message, setMessage] = useState({
 		visible: false,
-		color: "gray",
-		text: "There's been an error. Please try again.",
+		color: "",
+		text: "",
 	});
 
 	useEffect(() => {
@@ -71,7 +71,6 @@ export default function Wishlist() {
 	};
 
 	const handleAddToWishlist = (res) => {
-		console.log("Handle Add To Wishlist:");
 		handleAddRecord(res);
 		axios
 			.post("http://localhost:3001/addtowishlist", {
@@ -79,54 +78,30 @@ export default function Wishlist() {
 				rid: res.id,
 			})
 			.then((response) => {
-				console.log("Response:");
-				console.log(response);
+				// console.log("Response:");
+				// console.log(response);
 			})
 			.finally(() => {
-				// history.push("/");
 				updateWishlist();
-				setMessage({
-					...message,
-					visible: true,
-					color: "red",
-					text: `You have added ${res.title} to your wishlist!`,
-				});
-				setTimeout(() => {
-					setMessage({ ...message, visible: false });
-				}, 5000);
 			});
 	};
 
 	const handleDeleteFromWishlist = (res) => {
-		console.log("Handle Delete From Wishlist:");
-		// handleAddRecord(res);
 		axios
 			.post("http://localhost:3001/deletefromwishlist", {
 				uid: currentUser.uid,
 				rid: res.id,
 			})
 			.then((response) => {
-				console.log("Response:");
-				console.log(response);
+				// console.log("Response:");
+				// console.log(response);
 			})
 			.finally(() => {
-				// history.push("/");
 				updateWishlist();
-				setMessage({
-					...message,
-					visible: true,
-					color: "gray",
-					text: `You have removed ${res.title} from your wishlist!`,
-				});
-				setTimeout(() => {
-					setMessage({ ...message, visible: false });
-				}, 5000);
 			});
 	};
 
 	const handleAddRecord = (res) => {
-		console.log("Add " + res.id);
-
 		axios
 			.post("http://localhost:3001/addrecord", {
 				id: res.id,
@@ -136,11 +111,11 @@ export default function Wishlist() {
 				country: res.country,
 			})
 			.then((response) => {
-				console.log("Response:");
-				console.log(response);
+				// console.log("Response:");
+				// console.log(response);
 			})
 			.finally(() => {
-				// history.push("/");
+				//
 			});
 	};
 
@@ -186,9 +161,7 @@ export default function Wishlist() {
 					},
 				})
 				.then((response) => {
-					// console.log(response);
 					if (mounted) {
-						// console.log(response);
 						response.data.map((el) => {
 							tempArray.push({
 								id: el.id,
@@ -201,7 +174,6 @@ export default function Wishlist() {
 					}
 				})
 				.then(() => {
-					// console.log(tempArray);
 					setSearchResults(tempArray);
 					setLoading(false);
 				});
@@ -249,8 +221,6 @@ export default function Wishlist() {
 							passQuery={(query) => searchWishlist(query)}
 							placeholder='Browse your wishlist...'
 						/>
-						{/* Replace with your content */}
-						{/* <Records searchResults={searchResults} /> */}
 						<Records
 							current={"w"}
 							searchResults={searchResults}

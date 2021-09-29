@@ -37,8 +37,8 @@ export default function UserProfile() {
 	const history = useHistory();
 	const [message, setMessage] = useState({
 		visible: false,
-		color: "indigo",
-		text: "Ignore this please",
+		color: "",
+		text: "",
 	});
 
 	useEffect(() => {
@@ -79,7 +79,6 @@ export default function UserProfile() {
 							email: response.data[0].email,
 							username: username,
 						});
-						// setLoading(false);
 					} else {
 						history.push("/social");
 					}
@@ -88,24 +87,6 @@ export default function UserProfile() {
 			console.log("Update Wishlist ERROR:\n---\n" + err);
 		}
 	};
-
-	// usernames onih koje user prati i onih koji prate user-a:
-
-	// useEffect(() => {
-	// 	let mounted = true;
-	// 	console.log(currentUser.uid);
-	// 	console.log(following);
-	// 	return () => {
-	// 		mounted = false;
-	// 	};
-	// }, [following]);
-	// useEffect(() => {
-	// 	let mounted = true;
-	// 	console.log(followedBy);
-	// 	return () => {
-	// 		mounted = false;
-	// 	};
-	// }, [followedBy]);
 
 	const updateFollowings = () => {
 		setLoading(true);
@@ -119,7 +100,6 @@ export default function UserProfile() {
 				.then((response) => {
 					setFollowing([]);
 					setFollowedBy([]);
-					// console.log(response.data);
 					response.data.forEach((el) => {
 						if (el.follows !== user.uid) {
 							setFollowing((arr) => [...arr, el]);
@@ -127,8 +107,6 @@ export default function UserProfile() {
 							setFollowedBy((arr) => [...arr, el]);
 						}
 					});
-
-					// searchWishlist(query);
 					setLoading(false);
 				});
 		} catch (err) {
@@ -165,8 +143,6 @@ export default function UserProfile() {
 					response.data.forEach((el) => {
 						setWishlist((arr) => [...arr, el.rid]);
 					});
-					// searchWishlist(query);
-					// getResultCount(query);
 					setLoading(false);
 				});
 		} catch (err) {
@@ -190,8 +166,6 @@ export default function UserProfile() {
 					response.data.forEach((el) => {
 						setCollection((arr) => [...arr, el.rid]);
 					});
-					// searchCollection(query);
-					// getResultCount(query);
 					setLoading(false);
 				});
 		} catch (err) {
@@ -203,7 +177,6 @@ export default function UserProfile() {
 		if (loading === false) {
 			setLoading(true);
 		}
-		// updateWishlist();
 		try {
 			axios
 				.get("http://localhost:3001/getmywishlist", {
@@ -216,8 +189,6 @@ export default function UserProfile() {
 					response.data.forEach((el) => {
 						setUserWishlist((arr) => [...arr, el.rid]);
 					});
-					// searchWishlist(query);
-					// getResultCount(query);
 					setLoading(false);
 				});
 		} catch (err) {
@@ -230,7 +201,6 @@ export default function UserProfile() {
 		if (loading === false) {
 			setLoading(true);
 		}
-		// updateCollection();
 		try {
 			axios
 				.get("http://localhost:3001/getmycollection", {
@@ -243,9 +213,6 @@ export default function UserProfile() {
 					response.data.forEach((el) => {
 						setUserCollection((arr) => [...arr, el.rid]);
 					});
-					// searchCollection(query);
-					// getResultCount(query);
-					// setLoading(false);
 					setLoading(false);
 				});
 		} catch (err) {
@@ -266,7 +233,6 @@ export default function UserProfile() {
 			}, 5000);
 			return;
 		}
-		console.log("Handle Add To Wishlist:");
 		handleAddRecord(res);
 		axios
 			.post("http://localhost:3001/addtowishlist", {
@@ -274,8 +240,8 @@ export default function UserProfile() {
 				rid: res.id,
 			})
 			.then((response) => {
-				console.log("Response:");
-				console.log(response);
+				// console.log("Response:");
+				// console.log(response);
 			})
 			.finally(() => {
 				updateWishlist();
@@ -283,15 +249,14 @@ export default function UserProfile() {
 	};
 
 	const handleDeleteFromWishlist = (res) => {
-		console.log("Handle Delete From Wishlist:");
 		axios
 			.post("http://localhost:3001/deletefromwishlist", {
 				uid: currentUser.uid,
 				rid: res.id,
 			})
 			.then((response) => {
-				console.log("Response:");
-				console.log(response);
+				// console.log("Response:");
+				// console.log(response);
 			})
 			.finally(() => {
 				updateWishlist();
@@ -299,8 +264,6 @@ export default function UserProfile() {
 	};
 
 	const handleAddRecord = (res) => {
-		console.log("Add " + res.id);
-
 		let cover = "";
 		if (res.cover) {
 			cover = res.cover;
@@ -317,11 +280,11 @@ export default function UserProfile() {
 				country: res.country,
 			})
 			.then((response) => {
-				console.log("Response:");
-				console.log(response);
+				// console.log("Response:");
+				// console.log(response);
 			})
 			.finally(() => {
-				// history.push("/");
+				//
 			});
 	};
 
@@ -334,20 +297,11 @@ export default function UserProfile() {
 					follows: user.uid,
 				})
 				.then((response) => {
-					console.log("Response:");
-					console.log(response);
+					// console.log("Response:");
+					// console.log(response);
 				})
 				.finally(() => {
 					updateFollowings();
-					setMessage({
-						...message,
-						visible: true,
-						color: "indigo",
-						text: `You are now following ${user.username}`,
-					});
-					setTimeout(() => {
-						setMessage({ ...message, visible: false });
-					}, 5000);
 				});
 		} catch (err) {
 			console.log(err);
@@ -363,7 +317,6 @@ export default function UserProfile() {
 
 	const handleUnfollow = (user) => {
 		setLoading(true);
-		console.log("Unfollow");
 		try {
 			axios
 				.post("http://localhost:3001/unfollow", {
@@ -371,20 +324,11 @@ export default function UserProfile() {
 					follows: user.uid,
 				})
 				.then((response) => {
-					console.log("Response:");
-					console.log(response);
+					// console.log("Response:");
+					// console.log(response);
 				})
 				.finally(() => {
 					updateFollowings();
-					setMessage({
-						...message,
-						visible: true,
-						color: "gray",
-						text: `You are no longer following ${user.username}`,
-					});
-					setTimeout(() => {
-						setMessage({ ...message, visible: false });
-					}, 5000);
 				});
 		} catch (err) {
 			console.log(err);
@@ -444,9 +388,7 @@ export default function UserProfile() {
 					},
 				})
 				.then((response) => {
-					// console.log(response);
 					if (mounted) {
-						// console.log(response);
 						response.data.map((el) => {
 							tempArray.push({
 								id: el.id,
@@ -459,7 +401,6 @@ export default function UserProfile() {
 					}
 				})
 				.then(() => {
-					// console.log(tempArray);
 					setSearchResults(tempArray);
 				})
 				.then(() => {
@@ -579,15 +520,7 @@ export default function UserProfile() {
 				setOpen={setFollowersOpen}
 				title={"Followers"}
 			/>
-			{/* <header className='flex-grow-0 border-b border-indigo-100 bg-white'>
-				<div className='max-w-7xl mx-auto  py-6 px-4 sm:px-6 lg:px-8'>
-					{username && (
-						<h1 className='text-3xl font-bold text-gray-800'>
-							Hey
-						</h1>
-					)}
-				</div>
-			</header> */}
+
 			<Router>
 				<main className='flex flex-grow bg-gray-50'>
 					<div className='flex flex-col md:flex-row w-full  max-w-7xl  mx-auto '>
@@ -776,9 +709,6 @@ export default function UserProfile() {
 									}
 								/>
 							</Route>
-							{/* <Route path={`/u/${user.username}/social/:who`}>
-								<Users username={user.username} />
-							</Route> */}
 						</div>
 					</div>
 				</main>

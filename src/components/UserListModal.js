@@ -22,18 +22,8 @@ export default function UserListModal(props) {
 					onClose={closeModal}
 				>
 					<div className='min-h-screen px-4 text-center'>
-						{/* <Transition.Child
-							as={Fragment}
-							enter='ease-out duration-300'
-							enterFrom='opacity-0'
-							enterTo='opacity-100'
-							leave='ease-in duration-200'
-							leaveFrom='opacity-100'
-							leaveTo='opacity-0'
-						></Transition.Child> */}
 						<Dialog.Overlay className='fixed inset-0 bg-indigo-600 opacity-30 ' />
 
-						{/* This element is to trick the browser into centering the modal contents. */}
 						<span
 							className='inline-block h-screen align-middle'
 							aria-hidden='true'
@@ -139,20 +129,6 @@ export default function UserListModal(props) {
 									>
 										Click
 									</button>
-									{/* <button
-										type='button'
-										className='inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-red-500 border border-transparent rounded-md hover:bg-red-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500'
-										onClick={deleteReview}
-									>
-										Delete review
-									</button>
-									<button
-										type='button'
-										className='inline-flex justify-center px-4 py-2 text-sm font-medium text-gray-800 bg-gray-100 border border-transparent rounded-md hover:bg-gray-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-gray-500'
-										onClick={closeModal}
-									>
-										Cancel
-									</button> */}
 								</div>
 							</div>
 						</Transition.Child>

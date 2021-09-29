@@ -1,10 +1,9 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
 import axios from "axios";
 
 export default function Records(props) {
-	// console.log(props.current);
 	const [open, setOpen] = useState(false);
 	const [selectedRecord, setSelectedRecord] = useState("");
 	const [loading, setLoading] = useState(false);
@@ -25,6 +24,7 @@ export default function Records(props) {
 				setLoading(false);
 			});
 	};
+
 	return (
 		<div className='flex items-start justify-center flex-grow px-4 pb-6 sm:px-0'>
 			{props.loading ? (
@@ -177,7 +177,6 @@ export default function Records(props) {
 					className='fixed inset-0 overflow-hidden'
 					open={open}
 					onClose={setOpen}
-					// onClose={setImgLoading}
 				>
 					<div className='absolute inset-0 overflow-hidden'>
 						<Transition.Child
@@ -336,7 +335,6 @@ export default function Records(props) {
 											</div>
 										</div>
 										<div className='mt-6 relative flex-1 flex-grow px-4 sm:px-6'>
-											{/* Replace with your content */}
 											<div className='inset-0'>
 												<div
 													className='h-full  max-w-full'
@@ -424,11 +422,8 @@ export default function Records(props) {
 														</tbody>
 													</table>
 												</div>
-												{/* <div className='mt-6 bg-indigo-200'>
-													
-												</div> */}
 											</div>
-											{/* OVDJE SU DUGMICI */}
+											{/* Buttons: */}
 											{selectedRecord && (
 												<div className='flex flex-row flex-grow-0 flex-auto justify-between mt-6 space-x-6 w-full'>
 													{props.current === "w" ? (
@@ -542,8 +537,6 @@ export default function Records(props) {
 													)}
 												</div>
 											)}
-
-											{/* /End replace */}
 										</div>
 									</div>
 								</div>

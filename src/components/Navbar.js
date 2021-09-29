@@ -71,14 +71,6 @@ export default function Navbar() {
 											<path d='M162 192.2h-12.3c-3.9 0-7.6-.1-11.2-.4 0 17.7 9.5 27.4 28.4 29.1 5.2.4 10.3.7 15.2.7 12.7 0 28.6-2.9 47.7-8.7 19.1-5.8 36.3-15.3 51.5-28.4l13.9 69.5c-33.2 28.6-83.4 43-150.6 43-38.6 0-71.7-11.2-99.4-33.7C15 238.7 0 204.6 0 161.1c0-32.8 8.5-62.2 25.5-88.3C41.3 49 62.6 30.9 89.6 18.5 116.6 6.2 145.7 0 177 0c40.5 0 71.2 8.9 92 26.6 20.8 17.7 31.1 39.6 31.1 65.7-.1 26.1-12.6 49.2-37.4 69.5-25 20.2-58.5 30.4-100.7 30.4zm30.2-101.7c0-13.1-6.1-19.7-18.3-19.7-14 1.3-23.1 8.6-27.3 21.7-2.1 6.3-3.5 13.5-4.4 21.8-.8 8.3-2 17.1-3.7 26.5l48.9-10.9 4.2-34.2.6-5.2z'></path>
 										</g>
 									</svg>
-									{/* <img
-										className='h-8 w-8 hover:cursor-pointer'
-										src='./../logo.svg'
-										alt='elpie'
-										onClick={() => {
-											history.push("/");
-										}}
-									/> */}
 								</div>
 							</div>
 							<div className='hidden md:block'>
@@ -98,16 +90,6 @@ export default function Navbar() {
 							</div>
 							<div className='hidden md:block'>
 								<div className='ml-4 flex items-center md:ml-6'>
-									{/* <button className='bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none'>
-										<span className='sr-only'>
-											View notifications
-										</span>
-										<BellIcon
-											className='h-6 w-6'
-											aria-hidden='true'
-										/>
-									</button> */}
-
 									{/* Profile dropdown */}
 									<Menu as='div' className='ml-3 relative'>
 										{({ open }) => (

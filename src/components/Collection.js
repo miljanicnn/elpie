@@ -18,8 +18,8 @@ export default function Collection() {
 
 	const [message, setMessage] = useState({
 		visible: false,
-		color: "gray",
-		text: "There's been an error. Please try again.",
+		color: "",
+		text: "",
 	});
 
 	useEffect(() => {
@@ -29,7 +29,7 @@ export default function Collection() {
 			updateCollection();
 			setTotalResults(collection.length);
 		} else {
-			console.log("No User yet");
+			console.log("no user yet..");
 		}
 		return () => {
 			mounted = false;
@@ -93,23 +93,12 @@ export default function Collection() {
 				console.log(response);
 			})
 			.finally(() => {
-				// history.push("/");
 				updateCollection();
-				setMessage({
-					...message,
-					visible: true,
-					color: "indigo",
-					text: `You have added ${res.title} to your collection!`,
-				});
-				setTimeout(() => {
-					setMessage({ ...message, visible: false });
-				}, 5000);
 			});
 	};
 
 	const handleDeleteFromCollection = (res) => {
 		console.log("Handle Delete From Collection:");
-		// handleAddRecord(res);
 		axios
 			.post("http://localhost:3001/deletefromcollection", {
 				uid: currentUser.uid,
@@ -120,17 +109,7 @@ export default function Collection() {
 				console.log(response);
 			})
 			.finally(() => {
-				// history.push("/");
 				updateCollection();
-				setMessage({
-					...message,
-					visible: true,
-					color: "indigo",
-					text: `You have removed ${res.title} from your collection!`,
-				});
-				setTimeout(() => {
-					setMessage({ ...message, visible: false });
-				}, 5000);
 			});
 	};
 
@@ -149,9 +128,7 @@ export default function Collection() {
 				console.log("Response:");
 				console.log(response);
 			})
-			.finally(() => {
-				// history.push("/");
-			});
+			.finally(() => {});
 	};
 
 	const getResultCount = (q) => {
@@ -196,7 +173,6 @@ export default function Collection() {
 				})
 				.then((response) => {
 					if (mounted) {
-						// console.log(response);
 						const tempArray = [];
 						response.data.map((el) => {
 							tempArray.push({
