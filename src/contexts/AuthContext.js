@@ -52,7 +52,7 @@ export function AuthProvider({ children }) {
 					},
 				})
 				.then((response) => {
-					console.log(response);
+					// console.log(response);
 					if (response.data.length > 0) {
 						setUsername(response.data[0].username);
 						setLoading(false);

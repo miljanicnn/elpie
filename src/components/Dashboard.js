@@ -153,8 +153,8 @@ export default function Home() {
 					rating: rating,
 				})
 				.then((response) => {
-					console.log("Response:");
-					console.log(response);
+					// console.log("Response:");
+					// console.log(response);
 					if (response.status === 200) {
 						setReviews([]);
 						getTimelineReviews();
@@ -190,8 +190,8 @@ export default function Home() {
 					id: selectedReview.id,
 				})
 				.then((response) => {
-					console.log("Response:");
-					console.log(response);
+					// console.log("Response:");
+					// console.log(response);
 					if (response.status === 200) {
 						setReviews([]);
 						getTimelineReviews();
