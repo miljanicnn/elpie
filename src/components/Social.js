@@ -215,7 +215,7 @@ export default function Social() {
 												>
 													<div className='h-10 w-10 bg-white rounded-full relative object-contain overflow-hidden'>
 														<img
-															src={`https://avatars.dicebear.com/api/bottts/${user.username}.svg`}
+															src={`https://avatars.dicebear.com/api/big-smile/${user.username}.svg`}
 														/>
 													</div>
 

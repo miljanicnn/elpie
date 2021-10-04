@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Dialog, Transition } from "@headlessui/react";
 
 export default function UserListModal(props) {
@@ -42,27 +42,25 @@ export default function UserListModal(props) {
 							<div className='inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl'>
 								<Dialog.Title
 									as='h3'
-									className='text-lg text-center font-semibold leading-6 text-gray-900'
+									className='text-lg text-center font-semibold leading-6 text-gray-900 mb-3'
 								>
 									{props.title}
 								</Dialog.Title>
 								<div className='mt-2'>
-									<p className='text-sm text-center text-gray-500 pb-6'>
-										Text
-									</p>
-									<div className='flex flex-col w-full h-auto max-h-72 overflow-y-auto divide-y divide-gray-100 border border-gray-200 rounded-lg px-3'>
+									<div className='flex flex-col w-full h-auto max-h-72 overflow-y-auto divide-y divide-gray-100 border border-gray-200 rounded-lg px-3 '>
 										{props.title === "Following"
 											? props.list.map((user) => (
 													<div
 														key={user.follows}
 														className='py-3 whitespace-nowrap'
 													>
-														<Link
+														<NavLink
 															to={
 																"/u/" +
 																user.following
 															}
 															target='_blank'
+															className='focus:outline-none'
 														>
 															<div
 																key={
@@ -72,7 +70,7 @@ export default function UserListModal(props) {
 															>
 																<div className='h-10 w-10 bg-white rounded-full relative object-contain overflow-hidden'>
 																	<img
-																		src={`https://avatars.dicebear.com/api/bottts/${user.following}.svg`}
+																		src={`https://avatars.dicebear.com/api/big-smile/${user.following}.svg`}
 																	/>
 																</div>
 																<div className='ml-4'>
@@ -83,7 +81,7 @@ export default function UserListModal(props) {
 																	</div>
 																</div>
 															</div>
-														</Link>
+														</NavLink>
 													</div>
 											  ))
 											: props.list.map((user) => (
@@ -91,12 +89,13 @@ export default function UserListModal(props) {
 														key={user.uid}
 														className='py-3 whitespace-nowrap'
 													>
-														<Link
+														<NavLink
 															to={
 																"/u/" +
 																user.follower
 															}
 															target='_blank'
+															className='focus:outline-none'
 														>
 															<div
 																key={user.uid}
@@ -104,7 +103,7 @@ export default function UserListModal(props) {
 															>
 																<div className='h-10 w-10 bg-white rounded-full relative object-contain overflow-hidden'>
 																	<img
-																		src={`https://avatars.dicebear.com/api/bottts/${user.follower}.svg`}
+																		src={`https://avatars.dicebear.com/api/big-smile/${user.follower}.svg`}
 																	/>
 																</div>
 																<div className='ml-4'>
@@ -115,7 +114,7 @@ export default function UserListModal(props) {
 																	</div>
 																</div>
 															</div>
-														</Link>
+														</NavLink>
 													</div>
 											  ))}
 									</div>
@@ -124,10 +123,10 @@ export default function UserListModal(props) {
 								<div className='flex gap-3 justify-center pt-6'>
 									<button
 										type='button'
-										className='inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-red-500 border border-transparent rounded-md hover:bg-red-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500'
-										onClick={() => console.log("click")}
+										className='inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-red-500 border border-transparent rounded-md hover:bg-red-600 focus:outline-none'
+										onClick={closeModal}
 									>
-										Click
+										Close
 									</button>
 								</div>
 							</div>

@@ -107,7 +107,7 @@ export default function Login() {
 							</div>
 						</div>
 
-						<div className='divide-y-2'>
+						<div className='divide-y'>
 							<button
 								disabled={loading}
 								type='submit'
@@ -116,13 +116,18 @@ export default function Login() {
 								Log in
 							</button>
 							<p className='pt-6 text-center text-sm text-gray-600'>
-								Don't an account?{" "}
-								<Link
-									to='/signup'
-									className='font-medium text-indigo-600 hover:text-indigo-500'
-								>
-									Sign up!
-								</Link>
+								Pssst!
+								<br />
+								email:{" "}
+								<span className='font-mono underline'>
+									lovely@jubbly.com
+								</span>{" "}
+								| password{" "}
+								<span className='font-mono underline'>
+									lovelyjubbly083
+								</span>
+								<br />
+								Have fun!
 							</p>
 						</div>
 					</form>

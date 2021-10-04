@@ -109,7 +109,7 @@ export default function UserReviews(props) {
 							>
 								<div className='h-10 w-10 bg-white rounded-full relative border border-gray-200 p-1 object-contain overflow-hidden'>
 									<img
-										src={`https://avatars.dicebear.com/api/bottts/${props.user.username}.svg`}
+										src={`https://avatars.dicebear.com/api/big-smile/${props.user.username}.svg`}
 									/>
 								</div>
 								<div className='flex flex-col ml-4 '>

@@ -102,7 +102,7 @@ export default function Navbar() {
 														</span>
 														<img
 															className='h-8 w-8 rounded-full p-1'
-															src={`https://avatars.dicebear.com/api/bottts/${username}.svg`}
+															src={`https://avatars.dicebear.com/api/big-smile/${username}.svg`}
 															alt=''
 														/>
 													</Menu.Button>
@@ -197,7 +197,7 @@ export default function Navbar() {
 								<div className='flex-shrink-0 bg-white rounded-full'>
 									<img
 										className='h-8 w-8 rounded-full p-1'
-										src={`https://avatars.dicebear.com/api/bottts/${username}.svg`}
+										src={`https://avatars.dicebear.com/api/big-smile/${username}.svg`}
 										alt=''
 									/>
 								</div>

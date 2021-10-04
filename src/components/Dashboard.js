@@ -279,9 +279,8 @@ export default function Home() {
 				<div className='max-w-7xl mx-auto  p-6'>
 					{username && (
 						<h1 className='text-3xl font-bold text-gray-800'>
-							<Link to={"/u/" + username}>
-								Welcome, {username}.
-							</Link>
+							Welcome,{" "}
+							<Link to={"/u/" + username}>{username}</Link>.
 						</h1>
 					)}
 				</div>
@@ -404,7 +403,7 @@ export default function Home() {
 										>
 											<div className='h-10 w-10 bg-white rounded-full border border-gray-200 p-1 relative object-contain overflow-hidden'>
 												<img
-													src={`https://avatars.dicebear.com/api/bottts/${review.username}.svg`}
+													src={`https://avatars.dicebear.com/api/big-smile/${review.username}.svg`}
 												/>
 											</div>
 											<div className='flex flex-col ml-4 '>
