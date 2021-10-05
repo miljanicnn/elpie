@@ -67,7 +67,7 @@ export default function UserProfile() {
 		}
 		try {
 			axios
-				.get("http://localhost:3001/getuser", {
+				.get("https://elpie-server.herokuapp.com/getuser", {
 					params: {
 						username: username,
 					},
@@ -92,7 +92,7 @@ export default function UserProfile() {
 		setLoading(true);
 		try {
 			axios
-				.get("http://localhost:3001/getfollowings", {
+				.get("https://elpie-server.herokuapp.com/getfollowings", {
 					params: {
 						uid: user.uid,
 					},
@@ -133,7 +133,7 @@ export default function UserProfile() {
 		}
 		try {
 			axios
-				.get("http://localhost:3001/getmywishlist", {
+				.get("https://elpie-server.herokuapp.com/getmywishlist", {
 					params: {
 						uid: currentUser.uid,
 					},
@@ -156,7 +156,7 @@ export default function UserProfile() {
 		}
 		try {
 			axios
-				.get("http://localhost:3001/getmycollection", {
+				.get("https://elpie-server.herokuapp.com/getmycollection", {
 					params: {
 						uid: currentUser.uid,
 					},
@@ -179,7 +179,7 @@ export default function UserProfile() {
 		}
 		try {
 			axios
-				.get("http://localhost:3001/getmywishlist", {
+				.get("https://elpie-server.herokuapp.com/getmywishlist", {
 					params: {
 						uid: user.uid,
 					},
@@ -203,7 +203,7 @@ export default function UserProfile() {
 		}
 		try {
 			axios
-				.get("http://localhost:3001/getmycollection", {
+				.get("https://elpie-server.herokuapp.com/getmycollection", {
 					params: {
 						uid: user.uid,
 					},
@@ -235,7 +235,7 @@ export default function UserProfile() {
 		}
 		handleAddRecord(res);
 		axios
-			.post("http://localhost:3001/addtowishlist", {
+			.post("https://elpie-server.herokuapp.com/addtowishlist", {
 				uid: currentUser.uid,
 				rid: res.id,
 			})
@@ -250,7 +250,7 @@ export default function UserProfile() {
 
 	const handleDeleteFromWishlist = (res) => {
 		axios
-			.post("http://localhost:3001/deletefromwishlist", {
+			.post("https://elpie-server.herokuapp.com/deletefromwishlist", {
 				uid: currentUser.uid,
 				rid: res.id,
 			})
@@ -272,7 +272,7 @@ export default function UserProfile() {
 		}
 
 		axios
-			.post("http://localhost:3001/addrecord", {
+			.post("https://elpie-server.herokuapp.com/addrecord", {
 				id: res.id,
 				title: res.title,
 				cover: cover,
@@ -292,7 +292,7 @@ export default function UserProfile() {
 		setLoading(true);
 		try {
 			axios
-				.post("http://localhost:3001/follow", {
+				.post("https://elpie-server.herokuapp.com/follow", {
 					uid: currentUser.uid,
 					follows: user.uid,
 				})
@@ -319,7 +319,7 @@ export default function UserProfile() {
 		setLoading(true);
 		try {
 			axios
-				.post("http://localhost:3001/unfollow", {
+				.post("https://elpie-server.herokuapp.com/unfollow", {
 					uid: currentUser.uid,
 					follows: user.uid,
 				})
@@ -350,12 +350,15 @@ export default function UserProfile() {
 
 		try {
 			axios
-				.get("http://localhost:3001/getwishlistquerycount", {
-					params: {
-						uid: user.uid,
-						query: q,
-					},
-				})
+				.get(
+					"https://elpie-server.herokuapp.com/getwishlistquerycount",
+					{
+						params: {
+							uid: user.uid,
+							query: q,
+						},
+					}
+				)
 				.then((response) => {
 					setTotalResults(response.data[0].count);
 					setLoading(false);
@@ -380,7 +383,7 @@ export default function UserProfile() {
 
 		try {
 			axios
-				.get("http://localhost:3001/searchmywishlist", {
+				.get("https://elpie-server.herokuapp.com/searchmywishlist", {
 					params: {
 						uid: user.uid,
 						query: q,
@@ -425,7 +428,7 @@ export default function UserProfile() {
 
 		try {
 			axios
-				.get("http://localhost:3001/searchmycollection", {
+				.get("https://elpie-server.herokuapp.com/searchmycollection", {
 					params: {
 						uid: user.uid,
 						query: q,
@@ -466,7 +469,7 @@ export default function UserProfile() {
 
 		try {
 			axios
-				.get("http://localhost:3001/getreviews", {
+				.get("https://elpie-server.herokuapp.com/getreviews", {
 					params: {
 						uid: user.uid,
 					},

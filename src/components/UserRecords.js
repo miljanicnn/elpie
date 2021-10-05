@@ -55,7 +55,7 @@ export default function UserRecords(props) {
 
 		try {
 			axios
-				.get("http://localhost:3001/searchmywishlist", {
+				.get("https://elpie-server.herokuapp.com/searchmywishlist", {
 					params: {
 						uid: props.user.uid,
 						query: q,
@@ -102,7 +102,7 @@ export default function UserRecords(props) {
 
 		try {
 			axios
-				.get("http://localhost:3001/searchmycollection", {
+				.get("https://elpie-server.herokuapp.com/searchmycollection", {
 					params: {
 						uid: props.user.uid,
 						query: q,
@@ -147,8 +147,8 @@ export default function UserRecords(props) {
 			axios
 				.get(
 					props.show === "c"
-						? "http://localhost:3001/getcollectionquerycount"
-						: "http://localhost:3001/getwishlistquerycount",
+						? "https://elpie-server.herokuapp.com/getcollectionquerycount"
+						: "https://elpie-server.herokuapp.com/getwishlistquerycount",
 					{
 						params: {
 							uid: props.user.uid,

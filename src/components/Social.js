@@ -30,7 +30,7 @@ export default function Social() {
 		setLoading(true);
 		try {
 			axios
-				.get("http://localhost:3001/getfollowings", {
+				.get("https://elpie-server.herokuapp.com/getfollowings", {
 					params: {
 						uid: currentUser.uid,
 					},
@@ -59,7 +59,7 @@ export default function Social() {
 		setLoading(true);
 		try {
 			axios
-				.post("http://localhost:3001/follow", {
+				.post("https://elpie-server.herokuapp.com/follow", {
 					uid: currentUser.uid,
 					follows: user.uid,
 				})
@@ -96,7 +96,7 @@ export default function Social() {
 		console.log("Unfollow");
 		try {
 			axios
-				.post("http://localhost:3001/unfollow", {
+				.post("https://elpie-server.herokuapp.com/unfollow", {
 					uid: currentUser.uid,
 					follows: user.uid,
 				})
@@ -135,7 +135,7 @@ export default function Social() {
 			setLoading(true);
 			try {
 				axios
-					.get("http://localhost:3001/searchusers", {
+					.get("https://elpie-server.herokuapp.com/searchusers", {
 						params: {
 							query: q,
 						},

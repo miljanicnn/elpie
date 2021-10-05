@@ -33,6 +33,9 @@ export default function BrowseRecords() {
 
 	const [sorting, setSorting] = useState({ sort: "", order: "desc" });
 
+	const consumerKey = process.env.REACT_APP_D_CONSUMER_KEY;
+	const consumerSecret = process.env.REACT_APP_D_CONSUMER_SECRET;
+
 	useEffect(() => {
 		let mounted = true;
 		if (page !== 1) {
@@ -77,7 +80,7 @@ export default function BrowseRecords() {
 	const updateWishlist = () => {
 		try {
 			axios
-				.get("http://localhost:3001/getmywishlist", {
+				.get("https://elpie-server.herokuapp.com/getmywishlist", {
 					params: {
 						uid: currentUser.uid,
 					},
@@ -96,7 +99,7 @@ export default function BrowseRecords() {
 	const updateCollection = () => {
 		try {
 			axios
-				.get("http://localhost:3001/getmycollection", {
+				.get("https://elpie-server.herokuapp.com/getmycollection", {
 					params: {
 						uid: currentUser.uid,
 					},
@@ -128,7 +131,7 @@ export default function BrowseRecords() {
 		setButtonLoading(true);
 		handleAddRecord(res);
 		axios
-			.post("http://localhost:3001/addtowishlist", {
+			.post("https://elpie-server.herokuapp.com/addtowishlist", {
 				uid: currentUser.uid,
 				rid: res.id,
 			})
@@ -147,7 +150,7 @@ export default function BrowseRecords() {
 		setButtonLoading(true);
 		// handleAddRecord(res);
 		axios
-			.post("http://localhost:3001/deletefromwishlist", {
+			.post("https://elpie-server.herokuapp.com/deletefromwishlist", {
 				uid: currentUser.uid,
 				rid: res.id,
 			})
@@ -166,7 +169,7 @@ export default function BrowseRecords() {
 		setButtonLoading(true);
 		handleAddRecord(res);
 		axios
-			.post("http://localhost:3001/addtocollection", {
+			.post("https://elpie-server.herokuapp.com/addtocollection", {
 				uid: currentUser.uid,
 				rid: res.id,
 			})
@@ -180,7 +183,7 @@ export default function BrowseRecords() {
 		setButtonLoading(true);
 		// handleAddRecord(res);
 		axios
-			.post("http://localhost:3001/deletefromcollection", {
+			.post("https://elpie-server.herokuapp.com/deletefromcollection", {
 				uid: currentUser.uid,
 				rid: res.id,
 			})
@@ -199,7 +202,7 @@ export default function BrowseRecords() {
 			cover = res.images[0].uri;
 		}
 		axios
-			.post("http://localhost:3001/addrecord", {
+			.post("https://elpie-server.herokuapp.com/addrecord", {
 				id: res.id,
 				title: res.title,
 				cover: cover,
@@ -234,7 +237,7 @@ export default function BrowseRecords() {
 			try {
 				axios
 					.get(
-						`https://api.discogs.com/database/search?q=${q}&key=QDOXZTcaZikNnaXinmje&secret=WmqZwuRljEgttuQLrKegggdRjwBzxYwk&type=master&format=Vinyl&per_page=12&page=${p}&sort=${sorting.sort}&sort_order=${sorting.order}&country=${countryRef.current.value}&genre=${genreRef.current.value}`
+						`https://api.discogs.com/database/search?q=${q}&key=${consumerKey}&secret=${consumerSecret}&type=master&format=Vinyl&per_page=12&page=${p}&sort=${sorting.sort}&sort_order=${sorting.order}&country=${countryRef.current.value}&genre=${genreRef.current.value}`
 					)
 					.then((response) => {
 						if (mounted) {

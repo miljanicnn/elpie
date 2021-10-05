@@ -41,6 +41,7 @@ export default function Home() {
 
 	useEffect(() => {
 		let mounted = true;
+
 		if (currentUser) {
 			getTimelineReviews();
 			getUsers();
@@ -91,14 +92,15 @@ export default function Home() {
 
 		try {
 			axios
-				.get("http://localhost:3001/gettimelinereviews", {
+				.get("https://elpie-server.herokuapp.com/gettimelinereviews", {
 					params: {
 						uid: currentUser.uid,
 						offset: page * 5,
 					},
 				})
 				.then((response) => {
-					const newReviews = response.data;
+					var newReviews = response.data;
+					// console.log(response.data);
 					if (newReviews.length < 5) {
 						setLoadMoreButtonDisabled(true);
 					}
@@ -119,7 +121,7 @@ export default function Home() {
 		setUsers([]);
 		try {
 			axios
-				.get("http://localhost:3001/getusernames")
+				.get("https://elpie-server.herokuapp.com/getusernames")
 				.then((response) => {
 					response.data.forEach((el) => {
 						setUsers((arr) => [...arr, el]);
@@ -146,7 +148,7 @@ export default function Home() {
 		setLoading(true);
 		try {
 			axios
-				.post("http://localhost:3001/addreview", {
+				.post("https://elpie-server.herokuapp.com/addreview", {
 					uid: currentUser.uid,
 					rid: selected.id,
 					body: reviewRef.current.value,
@@ -186,7 +188,7 @@ export default function Home() {
 		setLoading(true);
 		try {
 			axios
-				.post("http://localhost:3001/deletereview", {
+				.post("https://elpie-server.herokuapp.com/deletereview", {
 					id: selectedReview.id,
 				})
 				.then((response) => {

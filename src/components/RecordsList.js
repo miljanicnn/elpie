@@ -43,7 +43,7 @@ export default function RecordsList(props) {
 
 		try {
 			axios
-				.get("http://localhost:3001/searchmycollection", {
+				.get("https://elpie-server.herokuapp.com/searchmycollection", {
 					params: {
 						uid: props.currentUser.uid,
 						query: q,

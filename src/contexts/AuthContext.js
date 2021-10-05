@@ -46,7 +46,7 @@ export function AuthProvider({ children }) {
 	const getUsername = () => {
 		try {
 			axios
-				.get("http://localhost:3001/getusername", {
+				.get("https://elpie-server.herokuapp.com/getusername", {
 					params: {
 						uid: currentUser.uid,
 					},

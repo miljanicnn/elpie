@@ -51,7 +51,7 @@ export default function Wishlist() {
 		setLoading(true);
 		try {
 			axios
-				.get("http://localhost:3001/getmywishlist", {
+				.get("https://elpie-server.herokuapp.com/getmywishlist", {
 					params: {
 						uid: currentUser.uid,
 					},
@@ -73,7 +73,7 @@ export default function Wishlist() {
 	const handleAddToWishlist = (res) => {
 		handleAddRecord(res);
 		axios
-			.post("http://localhost:3001/addtowishlist", {
+			.post("https://elpie-server.herokuapp.com/addtowishlist", {
 				uid: currentUser.uid,
 				rid: res.id,
 			})
@@ -88,7 +88,7 @@ export default function Wishlist() {
 
 	const handleDeleteFromWishlist = (res) => {
 		axios
-			.post("http://localhost:3001/deletefromwishlist", {
+			.post("https://elpie-server.herokuapp.com/deletefromwishlist", {
 				uid: currentUser.uid,
 				rid: res.id,
 			})
@@ -103,7 +103,7 @@ export default function Wishlist() {
 
 	const handleAddRecord = (res) => {
 		axios
-			.post("http://localhost:3001/addrecord", {
+			.post("https://elpie-server.herokuapp.com/addrecord", {
 				id: res.id,
 				title: res.title,
 				cover: res.cover,
@@ -125,12 +125,15 @@ export default function Wishlist() {
 
 		try {
 			axios
-				.get("http://localhost:3001/getwishlistquerycount", {
-					params: {
-						uid: currentUser.uid,
-						query: q,
-					},
-				})
+				.get(
+					"https://elpie-server.herokuapp.com/getwishlistquerycount",
+					{
+						params: {
+							uid: currentUser.uid,
+							query: q,
+						},
+					}
+				)
 				.then((response) => {
 					setTotalResults(response.data[0].count);
 					setLoading(false);
@@ -153,7 +156,7 @@ export default function Wishlist() {
 
 		try {
 			axios
-				.get("http://localhost:3001/searchmywishlist", {
+				.get("https://elpie-server.herokuapp.com/searchmywishlist", {
 					params: {
 						uid: currentUser.uid,
 						query: q,

@@ -61,7 +61,7 @@ export default function Collection() {
 		setLoading(true);
 		try {
 			axios
-				.get("http://localhost:3001/getmycollection", {
+				.get("https://elpie-server.herokuapp.com/getmycollection", {
 					params: {
 						uid: currentUser.uid,
 					},
@@ -84,7 +84,7 @@ export default function Collection() {
 		console.log("Handle Add To Collection:");
 		handleAddRecord(res);
 		axios
-			.post("http://localhost:3001/addtocollection", {
+			.post("https://elpie-server.herokuapp.com/addtocollection", {
 				uid: currentUser.uid,
 				rid: res.id,
 			})
@@ -100,7 +100,7 @@ export default function Collection() {
 	const handleDeleteFromCollection = (res) => {
 		console.log("Handle Delete From Collection:");
 		axios
-			.post("http://localhost:3001/deletefromcollection", {
+			.post("https://elpie-server.herokuapp.com/deletefromcollection", {
 				uid: currentUser.uid,
 				rid: res.id,
 			})
@@ -117,7 +117,7 @@ export default function Collection() {
 		console.log("Add " + res.id);
 
 		axios
-			.post("http://localhost:3001/addrecord", {
+			.post("https://elpie-server.herokuapp.com/addrecord", {
 				id: res.id,
 				title: res.title,
 				cover: res.cover,
@@ -137,12 +137,15 @@ export default function Collection() {
 
 		try {
 			axios
-				.get("http://localhost:3001/getcollectionquerycount", {
-					params: {
-						uid: currentUser.uid,
-						query: q,
-					},
-				})
+				.get(
+					"https://elpie-server.herokuapp.com/getcollectionquerycount",
+					{
+						params: {
+							uid: currentUser.uid,
+							query: q,
+						},
+					}
+				)
 				.then((response) => {
 					setTotalResults(response.data[0].count);
 					setLoading(false);
@@ -164,7 +167,7 @@ export default function Collection() {
 
 		try {
 			axios
-				.get("http://localhost:3001/searchmycollection", {
+				.get("https://elpie-server.herokuapp.com/searchmycollection", {
 					params: {
 						uid: currentUser.uid,
 						query: q,

@@ -48,6 +48,7 @@ export default function UserListModal(props) {
 								</Dialog.Title>
 								<div className='mt-2'>
 									<div className='flex flex-col w-full h-auto max-h-72 overflow-y-auto divide-y divide-gray-100 border border-gray-200 rounded-lg px-3 '>
+										<p>Test</p>
 										{props.title === "Following"
 											? props.list.map((user) => (
 													<div

@@ -43,7 +43,7 @@ export default function Signup() {
 		setUsernames([]);
 		try {
 			axios
-				.get("http://localhost:3001/getusernames")
+				.get("https://elpie-server.herokuapp.com/getusernames")
 				.then((response) => {
 					response.data.forEach((el) => {
 						setUsernames((arr) => [...arr, el.username]);
@@ -67,7 +67,7 @@ export default function Signup() {
 		console.log("addUser uid: " + currentUser.uid);
 
 		axios
-			.post("http://localhost:3001/adduser", {
+			.post("https://elpie-server.herokuapp.com/adduser", {
 				uid: currentUser.uid,
 				email: currentUser.email,
 				username: un,

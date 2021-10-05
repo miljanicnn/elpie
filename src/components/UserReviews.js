@@ -20,7 +20,7 @@ export default function UserReviews(props) {
 		setLoading(true);
 		try {
 			axios
-				.post("http://localhost:3001/deletereview", {
+				.post("https://elpie-server.herokuapp.com/deletereview", {
 					id: selectedReview.id,
 				})
 				.then((response) => {
