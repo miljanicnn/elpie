@@ -116,13 +116,13 @@ export default function Login() {
 								Log in
 							</button>
 							<p className='pt-6 text-center text-sm text-gray-600'>
-								Pssst!
+								Hey there, I've made a dummy account for you.
 								<br />
-								email:{" "}
+								Email:{" "}
 								<span className='font-mono underline'>
 									lovely@jubbly.com
 								</span>{" "}
-								| password{" "}
+								| Password{" "}
 								<span className='font-mono underline'>
 									lovelyjubbly083
 								</span>

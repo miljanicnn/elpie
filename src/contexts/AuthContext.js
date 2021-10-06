@@ -37,9 +37,9 @@ export function AuthProvider({ children }) {
 		if (currentUser !== null) {
 			getUsername();
 		} else {
-			setTimeout(() => {
-				getUsername();
-			}, 2000);
+			// setTimeout(() => {
+			// 	getUsername();
+			// }, 2000);
 		}
 	}, [currentUser]);
 
