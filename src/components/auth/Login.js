@@ -29,7 +29,7 @@ export default function Login() {
 			await login(emailRef.current.value, passwordRef.current.value).then(
 				(response) => {
 					if (mounted) {
-						console.log(response.user.email);
+						// console.log(response.user.email);
 					}
 				}
 			);

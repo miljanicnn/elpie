@@ -141,7 +141,6 @@ export default function Social() {
 						},
 					})
 					.then((response) => {
-						console.log(response);
 						response.data.forEach((el) => {
 							setUsers((arr) => [...arr, el]);
 						});
