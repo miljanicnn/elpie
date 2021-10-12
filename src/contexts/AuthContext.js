@@ -57,11 +57,11 @@ export function AuthProvider({ children }) {
 						setUsername(response.data[0].username);
 						setLoading(false);
 					} else {
-						console.log("ovdje bi bila greska");
+						// console.log("ovdje bi bila greska");
 					}
 				});
 		} catch (err) {
-			console.log("err: " + err);
+			// console.log("err: " + err);
 		}
 
 		return () => {

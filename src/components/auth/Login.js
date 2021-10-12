@@ -116,7 +116,7 @@ export default function Login() {
 								Log in
 							</button>
 							<p className='pt-6 text-center text-sm text-gray-600'>
-								Hey there, I've made a dummy account for you.
+								Hey there, I've made a test account for you.
 								<br />
 								Email:{" "}
 								<span className='font-mono underline'>
@@ -127,7 +127,14 @@ export default function Login() {
 									lovelyjubbly083
 								</span>
 								<br />
-								Have fun!
+								View project on{" "}
+								<a
+									href='https://github.com/miljanicnn/elpie.git'
+									target='_blank'
+									className='underline'
+								>
+									Github
+								</a>
 							</p>
 						</div>
 					</form>
