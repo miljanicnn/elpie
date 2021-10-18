@@ -6,7 +6,7 @@
 This is a project I developed as a part of my thesis.
 
 
-**elpie** is a web app where vinyl record collectors can search the [Discogs](https://www.discogs.com/) database, filter and sort the results, view record details, and then add records to their collections, wishlists and write reviews of the records from their collections.
+**elpie** is a web app where vinyl record collectors can search the [Discogs](https://www.discogs.com/) database ([API](https://www.discogs.com/developers)), filter and sort the results, view record details, and then add records to their collections, wishlists and write reviews of the records from their collections.
 They can also search and follow other users and see their profiles with reviews, collections and wishlists.
 
 ---
