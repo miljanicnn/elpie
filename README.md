@@ -2,6 +2,8 @@
 
 **Demo:** [elpieapp.netlify.app](https://elpieapp.netlify.app/)
 
+_NOTE: Bummer. Heroku no longer hosts the server for this app, so the only functionality that currently works is browsing the Discogs record database._
+
 ---
 This is a project I developed as a part of my thesis.
 
